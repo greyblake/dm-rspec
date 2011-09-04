@@ -26,9 +26,13 @@ module DataMapper
     end
 
     def have_errors_on(property)
+      puts "dm-rspec: `have_errors_on` is deprecated. Please use `have(n).errors_on` instead"
       HaveErrorsOn.new(property)
     end
 
-    alias :have_error_on :have_errors_on 
+    def have_error_on(property)
+      puts "dm-rspec: `have_error_on` is deprecated. Please use `have(1).error_on` instead"
+      HaveErrorsOn.new(property)
+    end
   end
 end

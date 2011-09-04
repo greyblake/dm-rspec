@@ -43,6 +43,7 @@ class Book
   belongs_to :author
   has n, :genres, :through => Resource
   validates_presence_of :name
+  validates_length_of :name, :min => 10
 end
 
 class Author

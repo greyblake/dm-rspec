@@ -24,8 +24,7 @@ In your spec files you can use the next matchers:
 * have\_many
 * have\_many\_and\_belong\_to
 * have\_property
-* have\_errors\_on
-* have\_error\_on
+* have(n).errors_on(:property)
 
 
 ## Examples
@@ -63,16 +62,19 @@ You specs can contain the next:
     specify {Books.should  have_many_and_belong_to :genres}
 
     it 'has errors' do
-      book = Book.new
+      book = Book.new(:name => 'fails on two validations')
       book.valid?
-      book.should have_errors_on(:name)
+      book.should have(2).errors_on(:name)
     end
 
 
 ## TODO
 
 Implement the next matchers:
-* have(n).errors\_on * have\_many(:models).through(:association) 
+
+* have\_many(:models).through(:association) 
+
+Implement matchers for validations.
 
 
 ## Contributing to dm-rspec
