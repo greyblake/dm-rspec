@@ -7,7 +7,11 @@ module DataMapper
       end
 
       def matches?(parent)
-        raise "Implement HaveManyThrough#matchers?"
+        relation = parent.relationships[@children.to_s]
+
+        relation.parent_model == parent and
+        relation.name == @children.to_sym and
+        relation.options[:through] == @broker.to_sym
       end
 
       def failure_message
