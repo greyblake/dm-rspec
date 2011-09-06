@@ -15,6 +15,12 @@ module DataMapper
         relation.parent_model == parent
       end
 
+      # called only when the next syntax is used:
+      #   Book.should have_many(:tags).trough(:tagging)
+      def through(broker)
+        HaveManyThrough.new(@children, broker)
+      end
+
       def failure_message
         "expected to have many #{@children}"
       end

@@ -42,6 +42,8 @@ class Book
   property :name, String
   belongs_to :author
   has n, :genres, :through => Resource
+  has n, :taggings
+  has n, :tags, :through => :taggings
   validates_presence_of :name
   validates_length_of :name, :min => 10
 end
@@ -58,3 +60,20 @@ class Genre
   property :name, String
   has n, :books, :through => Resource
 end
+
+class Tag
+  include DataMapper::Resource
+  property :id, Serial
+  has n, :taggings
+  has n, :books, :through => :taggings
+end
+
+class Tagging
+  include DataMapper::Resource
+  belongs_to :tag
+  belongs_to :book
+end
+
+debugger
+
+1 + 1
