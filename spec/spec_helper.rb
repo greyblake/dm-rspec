@@ -73,7 +73,3 @@ class Tagging
   belongs_to :tag
   belongs_to :book
 end
-
-debugger
-
-1 + 1

@@ -1,4 +1,5 @@
 # dm-rspec
+by Potapov Sergey (aka Blake)
 
 A set of rspec matchers to test DataMapper models like you test ActiveRecord models with rspec-rails.
 
@@ -25,6 +26,7 @@ In your spec files you can use the next matchers:
 * have\_many\_and\_belong\_to
 * have\_property
 * have(n).errors_on(:property)
+* have_many(:association).trough(:another_association)
 
 
 ## Examples
@@ -72,9 +74,8 @@ You specs can contain the next:
 
 Implement the next matchers:
 
-* have\_many(:models).through(:association) 
-
-Implement matchers for validations.
+* have timestamps
+* matchers to verify validations
 
 
 ## Contributing to dm-rspec
