@@ -1,4 +1,4 @@
-# dm-rspec
+# dm-rspec (RSpec matchers for DataMapper)
 by Potapov Sergey (aka Blake)
 
 A set of rspec matchers to test DataMapper models like you test ActiveRecord models with rspec-rails.
@@ -19,7 +19,7 @@ Add the next to your `spec_helper`:
       config.include(DataMapper::Matchers)
     end
 
-In your spec files you can use the next matchers:
+In your spec files you can use the next matchers to test appropriate DataMapper's validations:
 
 * belong\_to
 * have\_many
@@ -34,7 +34,7 @@ In your spec files you can use the next matchers:
 
 ## Examples
 
-Assume you have the next models:
+Assume you have the next data mapper models:
 
     class Book
       include DataMapper::Resource
@@ -78,7 +78,7 @@ You specs can contain the next:
 
 ## TODO
 
-Implement the next matchers:
+Implement the next rspec matchers:
 
 * have timestamps
 * matchers to verify validations
