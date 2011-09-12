@@ -1,3 +1,10 @@
+### version 0.1.1 / 2011-09-12
+
+* New matcher: validate\_presence\_of
+* New matcher: validate\_uniqueness\_of
+* New matcher: validate\_format\_of
+
+
 ### version 0.1.0 / 2011-09-04
 
 * New matcher: have many through

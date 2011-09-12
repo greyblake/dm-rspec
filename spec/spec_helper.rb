@@ -3,8 +3,13 @@ $LOAD_PATH.unshift(File.dirname(__FILE__))
 require 'rspec'
 require 'dm-core'
 require 'dm-validations'
+require 'dm-migrations'
+require 'dm-sqlite-adapter'
 
 require 'dm-rspec'
+
+
+DataMapper.setup(:default, "sqlite3::memory:")
 
 # Requires supporting files with custom matchers and macros, etc,
 # in ./support/ and its subdirectories.
@@ -34,6 +39,8 @@ class Proc
 end
 
 
+
+
 # Models for testing
 #
 class Book
@@ -45,13 +52,17 @@ class Book
   has n, :taggings
   has n, :tags, :through => :taggings
   validates_presence_of :name
+  validates_uniqueness_of :name, :message => 'Book name must be unique!'
   validates_length_of :name, :min => 10
 end
 
 class Author
   include DataMapper::Resource
   property :id, Serial
+  property :first_name, String
+  property :last_name, String
   has n, :books
+  validates_uniqueness_of :last_name
 end
 
 class Genre
@@ -59,6 +70,8 @@ class Genre
   property :id, Serial
   property :name, String
   has n, :books, :through => Resource
+  validates_uniqueness_of :name, :message => 'Genre name must be unique!'
+  validates_format_of :name, :with => /\w+/, :message => "Bad format of genre"
 end
 
 class Tag
@@ -66,10 +79,17 @@ class Tag
   property :id, Serial
   has n, :taggings
   has n, :books, :through => :taggings
+  property :name, String
+  validates_format_of :name, :with => /\w+/
 end
 
 class Tagging
   include DataMapper::Resource
+  property :id, Serial
   belongs_to :tag
   belongs_to :book
 end
+
+
+DataMapper.finalize
+DataMapper.auto_migrate!

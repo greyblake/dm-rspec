@@ -25,8 +25,11 @@ In your spec files you can use the next matchers:
 * have\_many
 * have\_many\_and\_belong\_to
 * have\_property
-* have(n).errors_on(:property)
-* have_many(:association).trough(:another_association)
+* have(n).errors\_on(:property)
+* have\_many(:association).trough(:another\_association)
+* validate\_presence\_of(:property)
+* validate\_uniqueness\_of(:property)
+* validate\_format\_of(:property).with(/regexp/)
 
 
 ## Examples
@@ -63,11 +66,14 @@ You specs can contain the next:
     specify {Genre.should  have_many_and_belong_to :books}
     specify {Books.should  have_many_and_belong_to :genres}
 
+    specify {Books.should validates_presence_of :name}
+
     it 'has errors' do
       book = Book.new(:name => 'fails on two validations')
       book.valid?
       book.should have(2).errors_on(:name)
     end
+
 
 
 ## TODO

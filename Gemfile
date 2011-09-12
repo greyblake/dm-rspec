@@ -17,4 +17,7 @@ group :development do
   gem 'libnotify' if RUBY_PLATFORM =~ /linux/
   gem 'ruby-debug19' if RUBY_VERSION =~ /^1\.9/
   gem 'ruby-debug' if RUBY_VERSION =~ /^1\.8/
+
+  gem 'dm-migrations'
+  gem 'dm-sqlite-adapter'
 end
