@@ -66,7 +66,7 @@ You specs can contain the next:
     specify {Genre.should  have_many_and_belong_to :books}
     specify {Books.should  have_many_and_belong_to :genres}
 
-    specify {Books.should validates_presence_of :name}
+    specify {Books.should validate_presence_of :name}
 
     it 'has errors' do
       book = Book.new(:name => 'fails on two validations')
