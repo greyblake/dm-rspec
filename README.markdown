@@ -22,6 +22,7 @@ Add the next to your `spec_helper`:
 In your spec files you can use the next matchers to test appropriate DataMapper's validations:
 
 * belong\_to
+* have\_one
 * have\_many
 * have\_many\_and\_belong\_to
 * have\_property
