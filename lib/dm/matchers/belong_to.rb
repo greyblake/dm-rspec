@@ -7,12 +7,12 @@ module DataMapper
       end
 
       def matches?(child)
-        @child = child
-        relation = @child.relationships[@parent.to_s]
+        child_class = child.is_a?(Class) ? child : child.class
+        relation = child_class.relationships[@parent.to_s]
 
         relation and
         relation.is_a?(DataMapper::Associations::ManyToOne::Relationship) and
-        relation.child_model == child
+        relation.child_model == child_class
       end
 
       def failure_message

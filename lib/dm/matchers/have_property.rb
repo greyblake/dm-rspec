@@ -7,7 +7,8 @@ module DataMapper
       end
 
       def matches?(model)
-        model.properties.map(&:name).include? @property
+        model_class = model.is_a?(Class) ? model : model.class
+        model_class.properties.map(&:name).include? @property
       end
 
       def failure_message
