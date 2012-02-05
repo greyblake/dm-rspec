@@ -90,6 +90,17 @@ class Tagging
   belongs_to :book
 end
 
+# To test validates_presence_of
+class Person
+  include DataMapper::Resource
+  property :id, Serial
+  property :first_name, String
+  property :last_name , String
+  property :age       , Integer
+  validates_presence_of :first_name, :message => 'Where is the first name?'
+  validates_presence_of :last_name
+end
+
 
 DataMapper.finalize
 DataMapper.auto_migrate!
