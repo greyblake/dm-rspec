@@ -1,3 +1,6 @@
+### version 0.1.2 / 2011-12-29
+* New matcher: have\_one
+
 ### version 0.1.1 / 2011-09-12
 
 * New matcher: validate\_presence\_of

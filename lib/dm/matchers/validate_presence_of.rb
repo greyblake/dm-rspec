@@ -10,8 +10,9 @@ module DataMapper
 
 
       def matches?(model)
+        model_class = model.is_a?(Class) ? model : model.class
         [nil, ''].each do |val|
-          obj = model.new(@property => val)
+          obj = model_class.new(@property => val)
           return false if obj.valid?
           if messages = obj.errors.send(:errors)[@property]
             return false unless messages.find{|msg| msg =~ @msg_reg}

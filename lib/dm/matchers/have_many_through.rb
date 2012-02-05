@@ -7,9 +7,10 @@ module DataMapper
       end
 
       def matches?(parent)
-        relation = parent.relationships[@children.to_s]
+        parent_class = parent.is_a?(Class) ?  parent : parent.class
+        relation = parent_class.relationships[@children.to_s]
 
-        relation.parent_model == parent and
+        relation.parent_model == parent_class and
         relation.name == @children.to_sym and
         relation.options[:through] == @broker.to_sym
       end

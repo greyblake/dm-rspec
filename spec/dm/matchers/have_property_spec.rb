@@ -17,4 +17,10 @@ describe DataMapper::Matchers::HaveProperty do
       lambda {Book.should_not have_property :name}.should fail_with "expected to not have property name"
     end
   end
+
+  context 'instance of model' do
+    it "should pass" do
+      lambda{ Book.new.should have_property :name}.should_pass
+    end
+  end
 end

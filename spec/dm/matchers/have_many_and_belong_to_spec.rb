@@ -19,4 +19,10 @@ describe DataMapper::Matchers::HaveManyAndBelongTo do
         should fail_with "expected to not have many and belong to books"
     end
   end
+
+  context 'instance of model' do
+    it "should pass" do
+      lambda{ Book.new.should have_many_and_belong_to :genres}.should_pass
+    end
+  end
 end

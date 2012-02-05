@@ -7,8 +7,8 @@ module DataMapper
       end
 
       def matches?(model)
-        @model = model
-	relation = @model.relationships[@name.to_s]
+        model_class = model.is_a?(Class) ? model : model.class
+	relation = model_class.relationships[@name.to_s]
 	relation && relation.is_a?(DataMapper::Associations::ManyToMany::Relationship)
       end
 

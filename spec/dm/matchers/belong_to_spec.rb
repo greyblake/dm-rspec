@@ -17,4 +17,11 @@ describe DataMapper::Matchers::BelongTo do
       lambda { Book.should_not belong_to :author }.should fail_with "expected to not belong to author"
     end
   end
+
+  context 'instance of model' do
+    it "should pass" do
+      lambda{ Book.new.should belong_to :author}.should_pass
+    end
+  end
+
 end

@@ -18,4 +18,10 @@ describe DataMapper::Matchers::HaveManyThrough do
       lambda { Book.should_not have_many(:tags).through(:taggings) }.should fail_with "expected to not have many tags through taggings"
     end
   end
+
+  context 'instance of model' do
+    it "should pass" do
+      lambda{ Book.new.should have_many(:tags).through(:taggings)}.should_pass
+    end
+  end
 end

@@ -13,7 +13,8 @@ module DataMapper
       end
 
       def matches?(model)
-        validators = model.validators.contexts[:default]
+        model_class = model.is_a?(Class) ? model : model.class
+        validators = model_class.validators.contexts[:default]
         format_of = validators.find do |validator|
           validator.is_a? DataMapper::Validations::FormatValidator and validator.field_name == @property
         end

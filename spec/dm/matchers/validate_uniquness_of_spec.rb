@@ -47,4 +47,11 @@ describe 'validate_uniqueness_of' do
       end
     end
   end
+
+
+  context 'instance of model' do
+    it "should pass" do
+      lambda { Author.new.should validate_uniqueness_of :last_name}.should_pass
+    end
+  end
 end

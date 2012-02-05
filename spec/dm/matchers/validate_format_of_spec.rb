@@ -47,4 +47,10 @@ describe 'validate_format_of' do
       end
     end
   end
+
+  context 'instance of model' do
+    it 'should pass' do
+      lambda { Tag.new.should validate_format_of(:name).with(/\w+/) }.should_pass
+    end
+  end
 end
