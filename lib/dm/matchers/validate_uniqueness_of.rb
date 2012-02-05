@@ -6,18 +6,17 @@ module DataMapper
 
     class ValidateUniquenessOf < ValidationMatcher
       set_validation_subject "uniqueness"
-      set_default_msg_reg    /is already taken$/
 
       def matches?(model)
         model_class = model.is_a?(Class) ? model : model.class
-        val = rand.to_s
 
-        model_class.create!(@property => val)
-        record = model_class.new(@property => val)
-        record.valid?
-        errors = record.errors.send(:errors)
-        errors = errors[@property.to_sym]
-        errors and errors.find {|msg| msg =~ @msg_reg}
+        validators = model_class.validators.contexts[:default]
+        uniqueness_of = validators.find do |validator|
+          validator.is_a? DataMapper::Validations::UniquenessValidator and validator.field_name == @property
+        end
+        return false unless uniqueness_of
+        return false if @msg and @msg != uniqueness_of.options[:message]
+        true
       end
     end
 

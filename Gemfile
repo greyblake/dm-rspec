@@ -11,7 +11,6 @@ group :development do
   gem "rspec"
   gem "bundler"
   gem "jeweler"
-  #gem "rcov", ">= 0"
   gem "reek"
   gem 'guard-rspec', :require => false
   gem 'libnotify' if RUBY_PLATFORM =~ /linux/

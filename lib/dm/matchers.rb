@@ -5,6 +5,7 @@ module DataMapper
 end
 
 require 'dm/matchers/belong_to'
+require 'dm/matchers/have_one'
 require 'dm/matchers/have_many'
 require 'dm/matchers/have_many_and_belong_to'
 require 'dm/matchers/have_many_through'

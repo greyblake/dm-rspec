@@ -48,6 +48,7 @@ class Book
   property :id, Serial
   property :name, String
   belongs_to :author
+  has 1, :foreword
   has n, :genres, :through => Resource
   has n, :taggings
   has n, :tags, :through => :taggings
@@ -101,6 +102,10 @@ class Person
   validates_presence_of :last_name
 end
 
+class Foreword
+  include DataMapper::Resource
+  property :id, Serial
+end
 
 DataMapper.finalize
 DataMapper.auto_migrate!
