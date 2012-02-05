@@ -16,4 +16,10 @@ describe DataMapper::Matchers::HaveOne do
       lambda { Book.should_not have_one :foreword}.should fail_with "expected not to have one foreword"
     end
   end
+
+  context 'instance of model' do
+    it 'should pass' do
+      lambda { Book.new.should have_one :foreword}.should_pass
+    end
+  end
 end

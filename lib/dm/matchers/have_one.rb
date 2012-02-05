@@ -6,12 +6,12 @@ module DataMapper
       end
 
       def matches?(parent)
-        @parent = parent
-        relation = @parent.relationships[@child.to_s]
+        parent_class = parent.is_a?(Class) ? parent : parent.class
+        relation = parent_class.relationships[@child.to_s]
 
         relation and
         relation.is_a?(DataMapper::Associations::OneToOne::Relationship) and
-        relation.parent_model == parent
+        relation.parent_model == parent_class
       end
 
       def failure_message
