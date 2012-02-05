@@ -6,21 +6,17 @@ module DataMapper
 
     class ValidatePresenceOf < ValidationMatcher
       set_validation_subject "presence"
-      set_default_msg_reg    /must not be blank$/
-
 
       def matches?(model)
-        [nil, ''].each do |val|
-          obj = model.new(@property => val)
-          return false if obj.valid?
-          if messages = obj.errors.send(:errors)[@property]
-            return false unless messages.find{|msg| msg =~ @msg_reg}
-          else
-            return false
-          end
+        validators = model.validators.contexts[:default]
+        presence_of = validators.find do |validator|
+          validator.is_a? DataMapper::Validations::PresenceValidator and validator.field_name == @property
         end
+        return false unless presence_of
+        return false if @msg and @msg != presence_of.options[:message]
         true
       end
+
     end
 
   end
