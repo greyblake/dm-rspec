@@ -1,3 +1,6 @@
+### version 0.2.0 / 2012-02-05
+* Matchers for model instances work as well.
+
 ### version 0.1.2 / 2011-12-29
 * New matcher: have\_one
 

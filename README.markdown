@@ -65,15 +65,23 @@ You specs can contain the next:
     specify {Book.should belong_to :author}
     specify {Author.should have_many :books}
     specify {Genre.should  have_many_and_belong_to :books}
-    specify {Books.should  have_many_and_belong_to :genres}
+    specify {Book.should  have_many_and_belong_to :genres}
 
-    specify {Books.should validate_presence_of :name}
+    specify {Book.should validate_presence_of :name}
 
     it 'has errors' do
       book = Book.new(:name => 'fails on two validations')
       book.valid?
       book.should have(2).errors_on(:name)
     end
+
+They can look like below as well:
+
+    describe Book do
+      it { should have_property :name   }
+      it { should  belongs_to   :author }
+    end
+
 
 
 
