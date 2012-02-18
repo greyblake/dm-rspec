@@ -17,4 +17,10 @@ describe DataMapper::Matchers::HaveMany do
       lambda { Author.should_not have_many :books}.should fail_with "expected to not have many books"
     end
   end
+
+  context 'instance of model' do
+    it "should pass" do
+      lambda { Author.new.should have_many :books }.should_pass
+    end
+  end
 end

@@ -7,12 +7,12 @@ module DataMapper
       end
 
       def matches?(parent)
-        @parent = parent
-        relation = @parent.relationships[@children.to_s]
+        parent_class = parent.is_a?(Class) ? parent : parent.class
+        relation = parent_class.relationships[@children.to_s]
 
         relation and
         relation.is_a?(DataMapper::Associations::OneToMany::Relationship) and
-        relation.parent_model == parent
+        relation.parent_model == parent_class
       end
 
       # called only when the next syntax is used:
@@ -28,7 +28,7 @@ module DataMapper
       def negative_failure_message
         "expected to not have many #{@children}"
       end
-      
+
       def description
         "has many #{@children}"
       end

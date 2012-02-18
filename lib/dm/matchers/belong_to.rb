@@ -22,7 +22,7 @@ module DataMapper
       def negative_failure_message
         "expected to not belong to #{@parent}"
       end
-      
+
       def description
         "belongs to #{@parent}"
       end
