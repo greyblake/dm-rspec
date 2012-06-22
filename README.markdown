@@ -6,7 +6,7 @@ A set of rspec matchers to test DataMapper models like you test ActiveRecord mod
 
 ## Installation
 
-    gem install dm-rspec
+    gem install dm-rspec2 # not published yet!
 
 
 ## Usage
@@ -19,23 +19,24 @@ Add the next to your `spec_helper`:
       config.include(DataMapper::Matchers)
     end
 
-In your spec files you can use the next matchers to test appropriate DataMapper's validations:
+In your spec files you can use the following matchers to test appropriate DataMapper's validations:
 
 * belong\_to
 * have\_one
 * have\_many
 * have\_many\_and\_belong\_to
-* have\_property
+* have\_property(:property_name).of_type(DataMapper::Property::String)
 * have(n).errors\_on(:property)
 * have\_many(:association).trough(:another\_association)
 * validate\_presence\_of(:property)
 * validate\_uniqueness\_of(:property)
 * validate\_format\_of(:property).with(/regexp/)
+* validate\_inclusion_\_of(:property).within([1,2,3])
 
 
 ## Examples
 
-Assume you have the next data mapper models:
+Assume you have the following data mapper models:
 
     class Book
       include DataMapper::Resource
@@ -59,7 +60,7 @@ Assume you have the next data mapper models:
       has n, :books, :through => Resource
     end
 
-You specs can contain the next:
+Your specs can contain the following:
 
     specify {Book.should have_property :name}
     specify {Book.should belong_to :author}
@@ -87,10 +88,7 @@ They can look like below as well:
 
 ## TODO
 
-Implement the next rspec matchers:
-
-* have timestamps
-* matchers to verify validations
+Update all the matchers to RSpec 2 format (see have_property.rb for an example)
 
 
 ## Contributing to dm-rspec
