@@ -3,6 +3,7 @@ source "http://rubygems.org"
 # Example:
 #   gem "activesupport", ">= 2.3.5"
 gem 'dm-core'
+gem 'dm-types'
 gem 'dm-validations'
 
 # Add dependencies to develop your gem here.

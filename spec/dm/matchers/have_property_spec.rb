@@ -22,7 +22,7 @@ describe "DataMapper::Matchers::HaveProperty" do
 
   context '#should_not' do
     it 'fails if property exists' do
-      lambda {Book.should_not have_property :name}.should fail_with "Expected Book to not have property name"
+      lambda {Book.should_not have_property :name}.should fail_with "Expected Book to not have property name, but it does!"
     end
   end
 

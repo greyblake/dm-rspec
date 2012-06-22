@@ -2,6 +2,7 @@ $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 require 'rspec'
 require 'dm-core'
+require 'dm-types'
 require 'dm-validations'
 require 'dm-migrations'
 require 'dm-sqlite-adapter'
@@ -98,6 +99,7 @@ class Person
   property :first_name, String
   property :last_name , String
   property :age       , Integer
+  property :gender    , Enum["male","female"]
   validates_presence_of :first_name, :message => 'Where is the first name?'
   validates_presence_of :last_name
 end

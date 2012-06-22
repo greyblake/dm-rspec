@@ -1,37 +1,37 @@
 require 'debugger'
 RSpec::Matchers.define :have_property do |property|
+
   chain :of_type do |type|
     @type = type
   end
 
   match do |model|
-    model_class = model.is_a?(Class) ? model : model.class
-    @has_property = model_class.properties.map(&:name).include? property
+    @model_class = model.is_a?(Class) ? model : model.class
+    @has_property = @model_class.properties.map(&:name).include? property
+    @model_property = @model_class.properties.find{|f| f.name == property}
+    puts @type
     if @type
-      p = model_class.properties.find{|f| f.name == property}
-      @has_property && p.class == @type
+      @has_property && @model_property.class == @type
     else
       @has_property
     end
   end
 
   failure_message_for_should do |model|
-    model_class = model.is_a?(Class) ? model : model.class
-    if @type
-      type = model_class.properties.find{|f| f.name == property}.class
+    if @type and @model_property
+      type = @model_property.class
       "property #{property} should be of type #{@type} but is of type #{type}"
     else
-      "Expected #{model_class} to have property #{property}"
+      "Expected #{@model_class} to have property #{property}"
     end
   end
 
   failure_message_for_should_not do |model|
-    model_class = model.is_a?(Class) ? model : model.class
-    if @type
-      type = model_class.properties.find{|f| f.name == property}.class
+    if @type and @model_property
+      type = @model_property.class
       "property #{property} should not be of type #{@type} but is of type #{type}"
     else
-      "Expected #{model_class} to not have property #{property}"
+      "Expected #{@model_class} to not have property #{property}, but it does!"
     end
   end
 
