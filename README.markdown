@@ -1,17 +1,17 @@
-# dm-rspec (RSpec matchers for DataMapper)
-by Potapov Sergey (aka Blake)
+# dm-rspec2 (RSpec 2 matchers for DataMapper)
+by svs
 
-A set of rspec matchers to test DataMapper models like you test ActiveRecord models with rspec-rails.
+based on the work of Potapov Sergey at [https://github.com/greyblake/dm-rspec](https://github.com/greyblake/dm-rspec)
 
+A set of rspec matchers to test DataMapper models like you test ActiveRecord models with rspec-rails that work with and use RSpec 2 matcher DSL
 
 ## Installation
 
     gem install dm-rspec2 # not published yet!
 
-
 ## Usage
     
-Add the next to your `spec_helper`:
+Add the following to your `spec_helper`:
 
     require 'dm-rspec'
     
