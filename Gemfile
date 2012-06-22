@@ -14,7 +14,7 @@ group :development do
   gem "reek"
   gem 'guard-rspec', :require => false
   gem 'libnotify' if RUBY_PLATFORM =~ /linux/
-  gem 'ruby-debug19' if RUBY_VERSION =~ /^1\.9/
+  gem 'debugger' if RUBY_VERSION =~ /^1\.9/
   gem 'ruby-debug' if RUBY_VERSION =~ /^1\.8/
 
   gem 'dm-migrations'
