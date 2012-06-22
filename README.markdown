@@ -31,7 +31,7 @@ In your spec files you can use the following matchers to test appropriate DataMa
 * validate\_presence\_of(:property)
 * validate\_uniqueness\_of(:property)
 * validate\_format\_of(:property).with(/regexp/)
-* validate\_inclusion_\_of(:property).within([1,2,3])
+* validate\_inclusion\_of(:property).within([1,2,3])
 
 
 ## Examples
