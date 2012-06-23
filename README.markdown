@@ -7,13 +7,13 @@ A set of rspec matchers to test DataMapper models like you test ActiveRecord mod
 
 ## Installation
 
-    gem install dm-rspec2 # not published yet!
+    gem install dm-rspec2
 
 ## Usage
     
 Add the following to your `spec_helper`:
 
-    require 'dm-rspec'
+    require 'dm-rspec2'
     
     RSpec.configure do |config|
       config.include(DataMapper::Matchers)
