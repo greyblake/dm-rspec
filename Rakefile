@@ -14,13 +14,13 @@ require 'rake'
 require 'jeweler'
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
-  gem.name = "dm-rspec"
-  gem.homepage = "http://github.com/greyblake/dm-rspec"
+  gem.name = "dm-rspec2"
+  gem.homepage = "http://github.com/svs/dm-rspec2"
   gem.license = "MIT"
-  gem.summary = %Q{It's a set of matchers for DataMapper. Something similar to rspec-rails gem.}
-  gem.description = %Q{RSpec matchers for DataMapper}
-  gem.email = "blake131313@gmail.com"
-  gem.authors = ["Potapov Sergey"]
+  gem.summary = %Q{It's a set of RSpec2 matchers for DataMapper. Something similar to rspec-rails gem.}
+  gem.description = %Q{RSpec2 matchers for DataMapper}
+  gem.email = "svs@svs.io"
+  gem.authors = ["Siddharth Sharma"]
   # dependencies defined in Gemfile
 end
 Jeweler::RubygemsDotOrgTasks.new

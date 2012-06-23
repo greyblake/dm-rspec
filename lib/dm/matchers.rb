@@ -17,3 +17,5 @@ require 'dm/matchers/validation_matcher'
 require 'dm/matchers/validate_presence_of'
 require 'dm/matchers/validate_uniqueness_of'
 require 'dm/matchers/validate_format_of'
+
+require 'dm/matchers/validate_inclusion_of'
