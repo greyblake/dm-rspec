@@ -9,7 +9,6 @@ RSpec::Matchers.define :have_property do |property|
     @model_class = model.is_a?(Class) ? model : model.class
     @has_property = @model_class.properties.map(&:name).include? property
     @model_property = @model_class.properties.find{|f| f.name == property}
-    puts @type
     if @type
       @has_property && @model_property.class == @type
     else
