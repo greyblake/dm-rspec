@@ -39,7 +39,7 @@ module DataMapper
       end
 
       def description
-        "validates #{@validation_subject} of #{@property}"
+        "validate #{@validation_subject} of #{@property}"
       end
 
     end
