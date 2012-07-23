@@ -20,7 +20,7 @@ module DataMapper
       end
       
       def description
-        "has property #{@children}"
+        "have property #{@property}"
       end
     end
 
