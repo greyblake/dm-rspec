@@ -1,3 +1,6 @@
+### version 0.2.2 / 2012-07-24
+* Fix bug: display property name for have\_property matcher.
+
 ### version 0.2.1 / 2012-02-16
 * Fix bug: have\_many for model instances.
 
