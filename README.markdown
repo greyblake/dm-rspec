@@ -10,14 +10,16 @@ A set of rspec matchers to test DataMapper models like you test ActiveRecord mod
 
 
 ## Usage
-    
+
 Add the next to your `spec_helper`:
 
-    require 'dm-rspec'
-    
-    RSpec.configure do |config|
-      config.include(DataMapper::Matchers)
-    end
+```ruby
+require 'dm-rspec'
+
+RSpec.configure do |config|
+  config.include(DataMapper::Matchers)
+end
+```
 
 In your spec files you can use the next matchers to test appropriate DataMapper's validations:
 
@@ -37,50 +39,61 @@ In your spec files you can use the next matchers to test appropriate DataMapper'
 
 Assume you have the next data mapper models:
 
-    class Book
-      include DataMapper::Resource
-      property :id, Serial
-      property :name, String
-      belongs_to :author
-      has n, :genres, :through => Resource
-      validates_presence_of :name
-    end
+```ruby
+class Book
+  include DataMapper::Resource
 
-    class Author
-      include DataMapper::Resource
-      property :id, Serial
-      has n, :books
-    end
+  property :id  , Serial
+  property :name, String
 
-    class Genre
-      include DataMapper::Resource
-      property :id, Serial
-      property :name, String
-      has n, :books, :through => Resource
-    end
+  belongs_to :author
+  has n, :genres, :through => Resource
+
+  validates_presence_of :name
+end
+
+class Author
+  include DataMapper::Resource
+
+  property :id, Serial
+
+  has n, :books
+end
+
+class Genre
+  include DataMapper::Resource
+
+  property :id  , Serial
+  property :name, String
+
+  has n, :books, :through => Resource
+end
+```
 
 You specs can contain the next:
 
-    specify {Book.should have_property :name}
-    specify {Book.should belong_to :author}
-    specify {Author.should have_many :books}
-    specify {Genre.should  have_many_and_belong_to :books}
-    specify {Book.should  have_many_and_belong_to :genres}
+```ruby
+describe Book do
+  it { should have_property           :name   }
+  it { should belongs_to              :author }
+  it { should have_many_and_belong_to :genres }
+  it { should validate_presence_of    :name   }
 
-    specify {Book.should validate_presence_of :name}
+  it 'should have errors' do
+    book = Book.new(:name => 'fails on two validations')
+    book.valid?
+    book.should have(2).errors_on(:name)
+  end
+end
 
-    it 'has errors' do
-      book = Book.new(:name => 'fails on two validations')
-      book.valid?
-      book.should have(2).errors_on(:name)
-    end
+describe Author do
+  it { should have_many :books }
+end
 
-They can look like below as well:
-
-    describe Book do
-      it { should have_property :name   }
-      it { should  belongs_to   :author }
-    end
+describe Genre do
+  it { should have_many_and_belong_to :books }
+end
+```
 
 
 
@@ -94,7 +107,7 @@ Implement the next rspec matchers:
 
 
 ## Contributing to dm-rspec
- 
+
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet
 * Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it
 * Fork the project
@@ -102,6 +115,13 @@ Implement the next rspec matchers:
 * Commit and push until you are happy with your contribution
 * Make sure to add tests for it. This is important so I don't break it in a future version unintentionally.
 * Please try not to mess with the Rakefile, version, or history. If you want to have your own version, or is otherwise necessary, that is fine, but please isolate to its own commit so I can cherry-pick around it.
+
+## Credits
+
+* [Sergey Potapov](https://github.com/greyblake) - creator and maintainer
+* [Victor Deryagin](https://github.com/vderyagin)
+* [George Hindle](https://github.com/ghindle)
+* [Adam Meghji](https://github.com/adammeghji)
 
 
 ## License
