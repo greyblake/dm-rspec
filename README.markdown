@@ -75,7 +75,7 @@ You specs can contain the next:
 ```ruby
 describe Book do
   it { should have_property           :name   }
-  it { should belongs_to              :author }
+  it { should belong_to               :author }
   it { should have_many_and_belong_to :genres }
   it { should validate_presence_of    :name   }
 
