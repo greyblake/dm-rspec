@@ -56,6 +56,8 @@ module DataMapper
         end
         validator = validators.last
         
+        return false unless validator
+        
         if @maximum
           return validator.options[:maximum] == @maximum
         elsif @minimum
