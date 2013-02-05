@@ -36,6 +36,9 @@ class Proc
   def should_pass
     lambda { self.call }.should_not raise_error
   end
+  def should_fail
+    lambda { self.call }.should raise_error
+  end
 end
 
 
@@ -105,6 +108,20 @@ end
 class Foreword
   include DataMapper::Resource
   property :id, Serial
+end
+
+class Publisher
+  include DataMapper::Resource
+  property :id, Serial
+  property :name, String, :length => 128
+  property :address, String, :length => 1024
+  property :phone, String, :length => 5..15
+  property :zip, String
+  property :city, String
+  
+  validates_length_of :address, :maximum => 2000 #This overrides the previous :length
+  validates_length_of :zip, :is => 6
+  validates_length_of :city, :minimum => 2
 end
 
 DataMapper.finalize
