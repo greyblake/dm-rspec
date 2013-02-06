@@ -1,3 +1,6 @@
+### version 0.2.4 / 2013-02-07
+* New matcher: validate\_length\_of (GavinJoyce)
+
 ### version 0.2.3 / 2012-07-24
 * Fix bug: display property name for have\_property matcher.
 
