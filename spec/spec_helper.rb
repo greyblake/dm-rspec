@@ -26,7 +26,7 @@ end
 def fail()
   raise_error(RSpec::Expectations::ExpectationNotMetError)
 end
-  
+
 def fail_with(message)
   raise_error(RSpec::Expectations::ExpectationNotMetError,message)
 end
@@ -71,7 +71,7 @@ end
 
 class Genre
   include DataMapper::Resource
-  property :id, Serial
+  property :id  , Serial
   property :name, String
   has n, :books, :through => Resource
   validates_uniqueness_of :name, :message => 'Genre name must be unique!'
@@ -94,7 +94,7 @@ class Tagging
   belongs_to :book
 end
 
-# To test validates_presence_of
+# To test validate_presence_of
 class Person
   include DataMapper::Resource
   property :id, Serial
@@ -110,15 +110,16 @@ class Foreword
   property :id, Serial
 end
 
+# To test validate_length_of
 class Publisher
   include DataMapper::Resource
-  property :id, Serial
-  property :name, String, :length => 128
+  property :id     , Serial
+  property :name   , String, :length => 128
   property :address, String, :length => 1024
-  property :phone, String, :length => 5..15
-  property :zip, String
-  property :city, String
-  
+  property :phone  , String, :length => 5..15
+  property :zip    , String
+  property :city   , String
+
   validates_length_of :address, :maximum => 2000 #This overrides the previous :length
   validates_length_of :zip, :is => 6
   validates_length_of :city, :minimum => 2
