@@ -122,6 +122,7 @@ Implement the next rspec matchers:
 * [Victor Deryagin](https://github.com/vderyagin)
 * [George Hindle](https://github.com/ghindle)
 * [Adam Meghji](https://github.com/adammeghji)
+* [Gavin Joyce](https://github.com/GavinJoyce) - validate_length_of matcher
 
 
 ## License
