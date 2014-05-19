@@ -19,7 +19,17 @@ module DataMapper
         true
       end
 
-    end
+      def failure_message_for_presence
+        "expected to validate presence of #{@property}#{with_msg}"
+      end
 
+      def negative_failure_message
+        "expected to not validate presence of #{@property}#{with_msg}"
+      end
+
+      def with_msg
+        " with message \"#{@msg}\"" if @msg
+      end
+    end
   end
 end
