@@ -15,7 +15,7 @@ module DataMapper
         "expected to have property #{@property}"
       end
 
-      def negative_failure_message
+      def failure_message_when_negated
         "expected to not have property #{@property}"
       end
       

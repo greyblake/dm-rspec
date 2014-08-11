@@ -34,10 +34,12 @@ end
 class Proc
   include ::RSpec::Matchers
   def should_pass
-    lambda { self.call }.should_not raise_error
+    expect{ self.call  }.to_not raise_error
+    #lambda { self.call }.should_not raise_error
   end
   def should_fail
-    lambda { self.call }.should raise_error
+    expect{self.call}.to raise_error
+    #lambda { self.call }.should raise_error
   end
 end
 
