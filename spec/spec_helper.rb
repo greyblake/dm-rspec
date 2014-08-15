@@ -7,6 +7,7 @@ require 'dm-migrations'
 require 'dm-sqlite-adapter'
 
 require 'dm-rspec'
+require 'pry'
 
 
 DataMapper.setup(:default, "sqlite3::memory:")

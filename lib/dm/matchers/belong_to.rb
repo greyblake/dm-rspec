@@ -19,7 +19,7 @@ module DataMapper
         "expected to belong to #{@parent}"
       end
 
-      def negative_failure_message
+      def failure_message_when_negated
         "expected to not belong to #{@parent}"
       end
 

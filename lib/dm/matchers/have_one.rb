@@ -18,7 +18,7 @@ module DataMapper
         "expected to have one #{@child}"
       end
 
-      def negative_failure_message
+      def failure_message_when_negated
         "expected not to have one #{@child}"
       end
 

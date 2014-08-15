@@ -4,23 +4,23 @@ require 'spec_helper'
 describe DataMapper::Matchers::HaveMany do
   context '#should' do
     it 'passes if association exists' do
-      lambda { Author.should have_many :books}.should_pass
+      lambda { expect(Author).to have_many :books}.should_pass
     end
 
     it 'fails if association does not exist' do
-      lambda { Author.should have_many :bad_relations}.should fail_with "expected to have many bad_relations"
+      expect { expect(Author).to have_many :bad_relations}.to fail_with "expected to have many bad_relations"
     end
   end
 
   context '#should_not' do
     it 'fails if association exists' do
-      lambda { Author.should_not have_many :books}.should fail_with "expected to not have many books"
+      expect { expect(Author).not_to have_many :books}.to fail_with "expected to not have many books"
     end
   end
 
   context 'instance of model' do
     it "should pass" do
-      lambda { Author.new.should have_many :books }.should_pass
+      lambda { expect(Author.new).to have_many :books }.should_pass
     end
   end
 end

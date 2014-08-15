@@ -16,7 +16,7 @@ module DataMapper
         "expected to have many and belong to #{@name}"
       end
 
-      def negative_failure_message
+      def failure_message_when_negated
         "expected to not have many and belong to #{@name}"
       end
       

@@ -30,7 +30,7 @@ module DataMapper
         msg
       end
 
-      def negative_failure_message
+      def failure_message_when_negated
         msg = "expected to not validate #{@validation_subject} of #{@property} with #{@format.inspect}"
         msg = %Q'#{msg} and message "#{@msg}"' if @msg
         msg
