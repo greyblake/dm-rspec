@@ -4,7 +4,6 @@ require 'spec_helper'
 describe DataMapper::Matchers::BelongTo do
   context '#should' do
     it 'passes if association exists' do
-      # expect{  }
       lambda { expect(Book).to belong_to :author }.should_pass
     end
 
