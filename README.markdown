@@ -1,5 +1,8 @@
 # dm-rspec (RSpec matchers for DataMapper)
-by Potapov Sergey (aka Blake)
+by Potapov Sergey (greyblake)
+
+[![Build Status](https://travis-ci.org/greyblake/dm-rspec.png?branch=master)](https://travis-ci.org/greyblake/dm-rspec)
+[![Code Climate](https://codeclimate.com/github/greyblake/dm-rspec/badges/gpa.svg)](https://codeclimate.com/github/greyblake/dm-rspec)
 
 A set of rspec matchers to test DataMapper models like you test ActiveRecord models with rspec-rails.
 
