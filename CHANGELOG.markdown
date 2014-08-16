@@ -1,3 +1,6 @@
+### version 0.3.0 / 2014-08-16
+* Move to RSpec 3 (chip, duduribeiro)
+
 ### version 0.2.4 / 2013-02-07
 * New matcher: validate\_length\_of (GavinJoyce)
 

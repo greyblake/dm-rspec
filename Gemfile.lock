@@ -133,4 +133,4 @@ DEPENDENCIES
   jeweler
   libnotify
   reek
-  rspec
+  rspec (~> 3.0.0)
